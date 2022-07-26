@@ -21,7 +21,7 @@
 const navs = document.getElementById("navbar__list");
 const sections = document.querySelectorAll("section");
 
-const navBuilder = () => {
+const nav_build = () => {
   let navUI = "";
   
   //section loops
@@ -34,7 +34,7 @@ const navBuilder = () => {
 //Appends element to navigation
   navs.innerHTML = navUI;
 }
-navBuilder();
+nav_build();
 /**
  * End Global Variables
  * Start Helper Functions
