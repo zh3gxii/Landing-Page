@@ -10,6 +10,10 @@
 
 
 /* ---- Base Rules ---- */
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background: rgb(136,203,171);
     background: linear-gradient(0deg, rgba(136,203,171,1) 0%, rgba(0,13,60,1) 100%);
@@ -65,13 +69,22 @@ section {
 
 /* Navigation Styles*/
 .navbar__menu ul {
+    padding: 2%;
     padding-left: 0;
     margin: 0;
-    text-align: right;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 5vh;
+    padding: 10px;
+    margin: auto;
+    list-style: none;
+    background-color: #fff;
 }
 
 .navbar__menu li {
-    display: inline-block;
+    padding: 5%;
 }
 
 .navbar__menu .menu__link {
@@ -80,6 +93,13 @@ section {
     font-weight: bold;
     text-decoration: none;
     color: #000;
+}
+
+.navbar__menu a:hover {
+   color:#fff;
+   border-bottom-style: solid;
+   border-bottom-color: #f57595;
+   border-radius: 10%;
 }
 
 .navbar__menu .menu__link:hover {
