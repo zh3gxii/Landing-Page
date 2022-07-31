@@ -17,24 +17,22 @@
  * Define Global Variables
  * 
 */
-
-const navs = document.getElementById("navbar__list");
+const navBar = document.getElementById("navbar__list");
 const sections = document.querySelectorAll("section");
 
-const nav_build = () => {
-  let navUI = "";
-  
-  //section loops
-  sections.forEach((section) => {
-    const sectionID = section.id;
-    const sectionDataNav = section.dataset.nav;
-    navUI += `<li><a class="menu__link" href="#${sectionID}">${sectionDataNav}</a></li>`;
-  });
-
+const navMenu = () => {
+  for (const section of sections) {
+    const sectionDataNav = section.getAttribute("data-nav");
+    const sectionID = section.getAttribute("id");
+    const navsLi = document.createElement("li");
+    navsLi.innerHTML = `<a class='menu__link' href='#${sectionID}'>${sectionDataNav}</a>`;
 //Appends element to navigation
-  navs.innerHTML = navUI;
-}
-nav_build();
+    navBar.appendChild(navsLi);
+  }
+  
+};
+navMenu();
+
 /**
  * End Global Variables
  * Start Helper Functions
