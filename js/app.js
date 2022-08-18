@@ -29,8 +29,30 @@ const navMenu = () => {
 //Appends element to navigation
     navBar.appendChild(navsLi);
   }
-  
 };
+
+//Viewport current position (by getBoundingClientRect) to know the user current viewing position
+const viewPort = (e) => {
+  position = e.getBoundingClientRect();
+  return (position.top >= 0);
+}
+
+//Arrow function to add and remove active class from section
+const activeClass = () => {
+  for (const section of sections) {
+    if (viewPort(section)) {
+      if (!section.classList.contains("your-active-class")) {
+        section.classList.add("your-active-class");
+      } 
+    } else {
+      section.classList.remove("your-active-class");
+    }
+  }
+}
+
+//listen for scroll events
+document.addEventListener("scroll", activeClass);
+
 navMenu();
 
 /**
