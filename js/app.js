@@ -32,13 +32,13 @@ const navMenu = () => {
 };
 
 //Viewport current position (by getBoundingClientRect) to know the user current viewing position
-const viewPort = (e) => {
-  position = e.getBoundingClientRect();
+const viewPort = (element) => {
+  const position = element.getBoundingClientRect();
   return (position.top >= 0);
 }
 
-//Arrow function to add and remove active class from section
-const activeClass = () => {
+//listen for scroll events by calling arrow function to add and remove active class from section
+document.addEventListener("scroll", yourActiveClass = () => {
   for (const section of sections) {
     if (viewPort(section)) {
       if (!section.classList.contains("your-active-class")) {
@@ -48,11 +48,7 @@ const activeClass = () => {
       section.classList.remove("your-active-class");
     }
   }
-}
-
-//listen for scroll events
-document.addEventListener("scroll", activeClass);
-
+});
 navMenu();
 
 /**
