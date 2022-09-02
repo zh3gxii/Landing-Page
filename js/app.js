@@ -19,38 +19,33 @@
 */
 const navBar = document.getElementById("navbar__list");
 const sections = document.querySelectorAll("section");
+//const navi = document.querySelectorAll("nav ul li");
 
 const navMenu = () => {
   for (const section of sections) {
-    const sectionDataNav = section.getAttribute("data-nav");
-    const sectionID = section.getAttribute("id");
-    const navsLi = document.createElement("li");
-    navsLi.innerHTML = `<a class='menu__link' href='#${sectionID}'>${sectionDataNav}</a>`;
-//Appends element to navigation
-    navBar.appendChild(navsLi);
+    const navLi = document.createElement("a");
+    navLi.innerHTML = section.getAttribute("data-nav");
+    navLi.href = "#" + section.id;
+    navBar.appendChild(navLi);
   }
 };
 
-//Viewport current position (by getBoundingClientRect) to know the user current viewing position
-const viewPort = (element) => {
-  const position = element.getBoundingClientRect();
-  return (position.top >= 0);
-}
-
-//listen for scroll events by calling arrow function to add and remove active class from section
-document.addEventListener("scroll", yourActiveClass = () => {
-  for (const section of sections) {
-    if (viewPort(section)) {
-      if (!section.classList.contains("your-active-class")) {
-        section.classList.add("your-active-class");
-      } 
-    } else {
-      section.classList.remove("your-active-class");
-    }
-  }
+window.addEventListener('scroll', () =>{
+    sections.forEach(function (sections) {
+      for (let i = 0; i < sections.length; i++) {
+        const pos = sections[i].getBoundingClientRect();
+        console.log(sections, pos);
+        if (pos.top >= 0 && pos.top < window.innerHeight) {
+          if (!sections.classList.contains("your-active-class")) {
+            sections[i].classList.add("your-active-class");
+          } 
+        } else {
+          sections[i].classList.remove("your-active-class");
+        }
+      }
+    })
 });
 navMenu();
-
 /**
  * End Global Variables
  * Start Helper Functions
