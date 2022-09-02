@@ -30,7 +30,7 @@ const navMenu = () => {
   }
 };
 
-window.addEventListener('scroll', () =>{
+window.addEventListener('scroll', myActiveClass = () => {
     sections.forEach(function (sections) {
       for (let i = 0; i < sections.length; i++) {
         const pos = sections[i].getBoundingClientRect();
